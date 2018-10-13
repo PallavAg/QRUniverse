@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mzm-wv-3E2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,38 +9,85 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--ML Kit-->
+        <scene sceneID="OE2-3G-hBI">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QR_Universe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="Y42-jm-fWq" customClass="ViewController" customModule="text_recognition" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O2l-4I-V1g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Mu-HI-PsC">
-                                <rect key="frame" x="81" y="146" width="244" height="168"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="do-not-feed-birds" translatesAutoresizingMaskIntoConstraints="NO" id="m3u-BY-dKf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="395"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-Ru-kXh">
-                                <rect key="frame" x="140" y="366" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Open Camera"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgL-7D-Q6T">
+                                <rect key="frame" x="0.0" y="457" width="375" height="152"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwg-ry-bsN">
+                                <rect key="frame" x="16" y="617" width="62" height="30"/>
+                                <state key="normal" title="Find Text"/>
                                 <connections>
-                                    <action selector="openCameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HB5-KA-6Hn"/>
+                                    <action selector="findTextDidTouch:" destination="Y42-jm-fWq" eventType="touchUpInside" id="qXV-I4-moj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuU-V9-5QQ">
+                                <rect key="frame" x="241" y="617" width="118" height="30"/>
+                                <state key="normal" title="Find Text (Cloud)"/>
+                                <connections>
+                                    <action selector="findTextCloudDidTouch:" destination="Y42-jm-fWq" eventType="touchUpInside" id="pys-kW-wf5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="Kee-69-6QO" firstAttribute="bottom" secondItem="m3u-BY-dKf" secondAttribute="bottom" constant="208" id="1Uh-0t-qgd"/>
+                            <constraint firstItem="zuU-V9-5QQ" firstAttribute="trailing" secondItem="O2l-4I-V1g" secondAttribute="trailingMargin" id="27G-U9-oNs"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fwg-ry-bsN" secondAttribute="trailingMargin" id="4sm-ct-Dxn"/>
+                            <constraint firstItem="wgL-7D-Q6T" firstAttribute="top" secondItem="Kee-69-6QO" secondAttribute="top" constant="393" id="6d0-an-sBm"/>
+                            <constraint firstItem="zuU-V9-5QQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O2l-4I-V1g" secondAttribute="leadingMargin" id="ARp-EA-a2i"/>
+                            <constraint firstItem="Fwg-ry-bsN" firstAttribute="top" secondItem="zuU-V9-5QQ" secondAttribute="top" id="IJH-lj-HUD"/>
+                            <constraint firstItem="wgL-7D-Q6T" firstAttribute="leading" secondItem="m3u-BY-dKf" secondAttribute="leading" id="K7j-kH-sRE"/>
+                            <constraint firstItem="Fwg-ry-bsN" firstAttribute="top" secondItem="wgL-7D-Q6T" secondAttribute="bottom" constant="8" symbolic="YES" id="LH6-CG-MMi"/>
+                            <constraint firstAttribute="trailing" secondItem="m3u-BY-dKf" secondAttribute="trailing" id="MJv-0D-3xO"/>
+                            <constraint firstAttribute="bottom" secondItem="Fwg-ry-bsN" secondAttribute="bottom" constant="20" symbolic="YES" id="Nbw-By-3oG"/>
+                            <constraint firstItem="wgL-7D-Q6T" firstAttribute="trailing" secondItem="m3u-BY-dKf" secondAttribute="trailing" id="QrP-Ie-igj"/>
+                            <constraint firstItem="Fwg-ry-bsN" firstAttribute="leading" secondItem="O2l-4I-V1g" secondAttribute="leadingMargin" id="YOi-Uw-rqk"/>
+                            <constraint firstItem="Fwg-ry-bsN" firstAttribute="baseline" secondItem="zuU-V9-5QQ" secondAttribute="baseline" id="he2-xZ-QL2"/>
+                            <constraint firstItem="m3u-BY-dKf" firstAttribute="top" secondItem="Kee-69-6QO" secondAttribute="top" id="l9h-vA-ALC"/>
+                            <constraint firstItem="m3u-BY-dKf" firstAttribute="leading" secondItem="O2l-4I-V1g" secondAttribute="leading" id="wBK-IW-PP9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kee-69-6QO"/>
                     </view>
+                    <navigationItem key="navigationItem" title="ML Kit" id="BQA-qu-zZK"/>
                     <connections>
-                        <outlet property="imagePicked" destination="7Mu-HI-PsC" id="O4O-JI-Ry6"/>
-                        <outlet property="imageTake" destination="7Mu-HI-PsC" id="yMI-Rg-XO4"/>
+                        <outlet property="imageView" destination="m3u-BY-dKf" id="Bxx-US-0M2"/>
+                        <outlet property="pickerView" destination="wgL-7D-Q6T" id="Hrt-Ht-KgV"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qt5-vD-sHn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-79.200000000000003" y="133.5832083958021"/>
+            <point key="canvasLocation" x="476" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="htD-Ag-kfJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mzm-wv-3E2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QfK-qt-yJn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y42-jm-fWq" kind="relationship" relationship="rootViewController" id="Bmm-NG-2q5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jST-t5-LOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-380" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="do-not-feed-birds" width="16" height="16"/>
+    </resources>
 </document>

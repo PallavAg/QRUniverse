@@ -35,6 +35,7 @@
                     </view>
                     <connections>
                         <outlet property="imagePicked" destination="7Mu-HI-PsC" id="O4O-JI-Ry6"/>
+                        <outlet property="imageTake" destination="7Mu-HI-PsC" id="yMI-Rg-XO4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

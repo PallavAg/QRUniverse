@@ -40,7 +40,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 return
             }
             
-            var finaltext = ""
+            var finaltext  = ""
             
             for block in features.blocks {
                 for line in block.lines {
@@ -51,13 +51,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
             
             print(finaltext)
-            // add final NLINGUISTICS
+            //add name tag
+            var card  = [String]()
+            var fullName = ""
             
             let tagger = NSLinguisticTagger(tagSchemes: [.nameType], options: 0)
             tagger.string = finaltext
             
             let range = NSRange(location: 0, length: finaltext.utf16.count)
-
+            
             let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace, .joinNames]
             let tags: [NSLinguisticTag] = [.personalName, .placeName, .organizationName]
             
@@ -65,13 +67,86 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 if let tag = tag, tags.contains(tag) {
                     if let range = Range(tokenRange, in: finaltext) {
                         let name = finaltext[range]
-                        if "\(tag)" == "NSLinguisticTag(_rawValue: Personal Name)"{
+                        print ("\(name): \(tag)")
+                        if "\(tag)" == "NSLinguisticTag(_rawValue: PersonalName)" && fullName == ""{
+                            fullName = ("\(name)")
+                            self.textName.text = "\(name)"
+                        }
+                        if "\(tag)" == "NSLinguisticTag(_rawValue: OrganizationName)"{
+                            
                             print ("\(name): \(tag)")
-                        self.textName.text = "\(name)"
                         }
                     }
                 }
             }
+
+            
+            
+            
+            
+            
+            //add remaining tags (enmails, address, phone number)
+            
+           
+            var email : String = ""
+            var address : String = ""
+            var phoneNumber : String = ""
+
+            let charset = CharacterSet(charactersIn: "@")
+            
+            var testString : NSString = finaltext as NSString
+            let types : NSTextCheckingResult.CheckingType = [.address , .date, .phoneNumber, .link ]
+            let dataDetector = try? NSDataDetector(types: types.rawValue)
+          
+            
+            dataDetector?.enumerateMatches(in: testString as String, options: [], range: NSMakeRange(0,testString.length), using: { (match, flags, _) in
+                
+                let matchString = testString.substring(with: (match?.range)!)
+                
+               if match?.resultType == .phoneNumber {
+                if phoneNumber == "" {
+                    phoneNumber = "\(matchString)"
+                }
+                //card.append("\(matchString)")
+                    print("phoneNumber: \(matchString)")
+                    
+                    
+                }else if match?.resultType == .address {
+                if address == "" {
+                    address = "\(matchString)"
+                }
+                //card.append("\(matchString)")
+                    print("address: \(matchString)")
+                    
+                    
+                }else if match?.resultType == .link {
+                
+                if "\(matchString)".rangeOfCharacter(from: charset) != nil {
+                    email = "\(matchString)"
+                }
+                    //card.append("\(matchString)")
+                    print("link: \(matchString)")
+                    
+                    
+                }
+                    
+                else{
+                    print("else \(matchString)")
+                }
+                
+            })
+        card.append(fullName)
+        card.append(phoneNumber)
+        card.append(address)
+        card.append(email)
+            
+           print (card)
+            
+            
+            
+           
+     
+            
             
         })
         

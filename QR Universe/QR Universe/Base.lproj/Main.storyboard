@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XFF-Cw-L49">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XmD-Zh-zDI">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -60,24 +60,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5b-Dh-EEM" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="782" y="-849"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3yw-yU-Ecj">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XFF-Cw-L49" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lBr-vp-ehw">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="sjH-hy-Lrh" kind="show" id="swD-i3-Aep"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cfG-cP-LmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1330" y="-34"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="eZc-D4-hA4">
@@ -155,6 +137,9 @@
                                 <rect key="frame" x="144" y="659" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Preferences"/>
+                                <connections>
+                                    <segue destination="Ggc-D1-mvP" kind="show" id="DFa-8C-tme"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9C-Bn-pJE">
                                 <rect key="frame" x="109" y="621" width="157" height="30"/>
@@ -173,6 +158,9 @@
                                 <rect key="frame" x="275" y="714" width="76" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send Email"/>
+                                <connections>
+                                    <action selector="sendEmail:" destination="LRg-Fd-D0t" eventType="touchUpInside" id="2hR-36-vGB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -184,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vyj-0o-0IM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344.80000000000001" y="-191.37931034482759"/>
+            <point key="canvasLocation" x="1287.2" y="-191.37931034482759"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Up-Zu-jDW">
@@ -198,14 +186,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTQ-2e-6jk">
-                                <rect key="frame" x="149" y="121" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send Email"/>
-                                <connections>
-                                    <action selector="sendEmail:" destination="sjH-hy-Lrh" eventType="touchUpInside" id="9ZT-hx-gCG"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmg-xj-Vh0">
                                 <rect key="frame" x="92" y="391" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4r-Xr-gZo" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-527.20000000000005" y="-53.201970443349758"/>
+            <point key="canvasLocation" x="415.19999999999999" y="-53.201970443349758"/>
         </scene>
         <!--Two View Controller-->
         <scene sceneID="Fxu-qm-99t">
@@ -273,10 +253,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6O-Q2-0o9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="526"/>
+            <point key="canvasLocation" x="1287.2" y="518.7192118226601"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Szo-Mb-l1k">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XmD-Zh-zDI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fCA-i1-pr1">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sjH-hy-Lrh" kind="relationship" relationship="rootViewController" id="6Lz-Q7-E3C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rTB-ZB-e3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-527.20000000000005" y="-53.201970443349758"/>
         </scene>
     </scenes>
     <resources>
         <image name="do-not-feed-birds" width="236" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DFa-8C-tme"/>
+    </inferredMetricsTieBreakers>
 </document>

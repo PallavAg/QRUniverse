@@ -8,13 +8,23 @@
 
 import UIKit
 import FirebaseMLVision
+import MessageUI
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+var personeName = ""
+//var personLastName = "Agarwal"
+var personEmail = ""
+var personAddress = ""
+var personPhone = ""
+var subject = "Follow Up"
+var textBody = "Dear %d, how are you? %d"
+
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,MFMailComposeViewControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
     var cloudTextRecognizer: VisionTextRecognizer!
     
-    
+  
+
     @IBOutlet weak var textName: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -135,10 +145,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 }
                 
             })
+            
+
+            
+            
+//        var fullNameArr = split(fullName) {$0 == " "}
+//        var firstName: String = fullNameArr[0]
+//        var lastName: String = fullNameArr.count > 1 ? fullNameArr[1] : nil
+//        card.append(firstName)
+//        card.append(lastName)
         card.append(fullName)
         card.append(phoneNumber)
         card.append(address)
         card.append(email)
+        
+            
+            personeName = card[0]
+        //var personLastName = "Agarwal"
+            personEmail = card[3]
+            personAddress = card[2]
+            personPhone = card[1]
             
         print (card)
             
@@ -202,14 +228,42 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     }
     
-    /*
-    // MARK: - Navigation
+//Iplementing send email functionality
+  
+    
+    
+    //var textBody = "Dear \(personeName) \(personLastName),\n How %d are you doing? "
+    var textBody = "Dear %d, how are you? %d"
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func sendEmail(_ sender: Any) {
+        let mailComposeViewController = configureMailController()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            showMailError()
+        }
     }
-    */
-
+    
+    func configureMailController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        var subject = "Follow up"
+        mailComposerVC.setToRecipients(["\(personEmail)"])
+        mailComposerVC.setSubject(subject)
+        mailComposerVC.setMessageBody(textBody, isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showMailError() {
+        let sendMailErrorAlert = UIAlertController(title: "Could not send email", message: "Your device could not send email", preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        sendMailErrorAlert.addAction(dismiss)
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

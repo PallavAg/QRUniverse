@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AA286B61203287D78D76369 /* Pods_QR_UniverseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28973A0DE00D1E5F7E510EB4 /* Pods_QR_UniverseTests.framework */; };
 		76FBE1AD217192C6007F8C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBE1AC217192C6007F8C8F /* AppDelegate.swift */; };
 		76FBE1AF217192C6007F8C8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBE1AE217192C6007F8C8F /* ViewController.swift */; };
 		76FBE1B2217192C6007F8C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FBE1B0217192C6007F8C8F /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		76FBE1B7217192C9007F8C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FBE1B5217192C9007F8C8F /* LaunchScreen.storyboard */; };
 		76FBE1C2217192C9007F8C8F /* QR_UniverseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBE1C1217192C9007F8C8F /* QR_UniverseTests.swift */; };
 		76FBE1CD217192C9007F8C8F /* QR_UniverseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBE1CC217192C9007F8C8F /* QR_UniverseUITests.swift */; };
+		8CFCD6F92171BC2C00CDAAD1 /* Pods_QR_Universe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F372AB3214B9FD55EA2AA89 /* Pods_QR_Universe.framework */; };
+		FC5211A630CD96F606B9E07F /* Pods_QR_UniverseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115219C35D3B7EAD3533D460 /* Pods_QR_UniverseUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		115219C35D3B7EAD3533D460 /* Pods_QR_UniverseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QR_UniverseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28973A0DE00D1E5F7E510EB4 /* Pods_QR_UniverseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QR_UniverseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F372AB3214B9FD55EA2AA89 /* Pods_QR_Universe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QR_Universe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66C3AA7FE93C663BACF2C8F1 /* Pods-QR Universe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QR Universe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QR Universe/Pods-QR Universe.debug.xcconfig"; sourceTree = "<group>"; };
 		76FBE1A9217192C6007F8C8F /* QR Universe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QR Universe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FBE1AC217192C6007F8C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76FBE1AE217192C6007F8C8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,11 @@
 		76FBE1C8217192C9007F8C8F /* QR UniverseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QR UniverseUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FBE1CC217192C9007F8C8F /* QR_UniverseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QR_UniverseUITests.swift; sourceTree = "<group>"; };
 		76FBE1CE217192C9007F8C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF256AB115962B57E3E306E6 /* Pods-QR UniverseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QR UniverseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QR UniverseUITests/Pods-QR UniverseUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F00822F6114219AE055785E8 /* Pods-QR UniverseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QR UniverseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QR UniverseTests/Pods-QR UniverseTests.release.xcconfig"; sourceTree = "<group>"; };
+		F610CF857C07D9B3502C2804 /* Pods-QR UniverseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QR UniverseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QR UniverseTests/Pods-QR UniverseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F63FF60C6409C12A74379DD3 /* Pods-QR UniverseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QR UniverseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QR UniverseUITests/Pods-QR UniverseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC7C097076829496D21F17AA /* Pods-QR Universe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QR Universe.release.xcconfig"; path = "Pods/Target Support Files/Pods-QR Universe/Pods-QR Universe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CFCD6F92171BC2C00CDAAD1 /* Pods_QR_Universe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AA286B61203287D78D76369 /* Pods_QR_UniverseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5211A630CD96F606B9E07F /* Pods_QR_UniverseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4476044BC96214EC7163588A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66C3AA7FE93C663BACF2C8F1 /* Pods-QR Universe.debug.xcconfig */,
+				FC7C097076829496D21F17AA /* Pods-QR Universe.release.xcconfig */,
+				F610CF857C07D9B3502C2804 /* Pods-QR UniverseTests.debug.xcconfig */,
+				F00822F6114219AE055785E8 /* Pods-QR UniverseTests.release.xcconfig */,
+				F63FF60C6409C12A74379DD3 /* Pods-QR UniverseUITests.debug.xcconfig */,
+				DF256AB115962B57E3E306E6 /* Pods-QR UniverseUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		76FBE1A0217192C6007F8C8F = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +109,8 @@
 				76FBE1C0217192C9007F8C8F /* QR UniverseTests */,
 				76FBE1CB217192C9007F8C8F /* QR UniverseUITests */,
 				76FBE1AA217192C6007F8C8F /* Products */,
+				4476044BC96214EC7163588A /* Pods */,
+				B7A428433B71154CA61BE427 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +155,16 @@
 			path = "QR UniverseUITests";
 			sourceTree = "<group>";
 		};
+		B7A428433B71154CA61BE427 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F372AB3214B9FD55EA2AA89 /* Pods_QR_Universe.framework */,
+				28973A0DE00D1E5F7E510EB4 /* Pods_QR_UniverseTests.framework */,
+				115219C35D3B7EAD3533D460 /* Pods_QR_UniverseUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76FBE1D1217192C9007F8C8F /* Build configuration list for PBXNativeTarget "QR Universe" */;
 			buildPhases = (
+				CA7C8B93C747E07B4493D30C /* [CP] Check Pods Manifest.lock */,
 				76FBE1A5217192C6007F8C8F /* Sources */,
 				76FBE1A6217192C6007F8C8F /* Frameworks */,
 				76FBE1A7217192C6007F8C8F /* Resources */,
+				6B05A1E3F4BF2C797921EC12 /* [CP] Embed Pods Frameworks */,
+				DF643B12EFA8705041B798A2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +192,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76FBE1D4217192C9007F8C8F /* Build configuration list for PBXNativeTarget "QR UniverseTests" */;
 			buildPhases = (
+				FE5247FF3F4C1D2F6A4C52E7 /* [CP] Check Pods Manifest.lock */,
 				76FBE1B9217192C9007F8C8F /* Sources */,
 				76FBE1BA217192C9007F8C8F /* Frameworks */,
 				76FBE1BB217192C9007F8C8F /* Resources */,
@@ -167,6 +211,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76FBE1D7217192C9007F8C8F /* Build configuration list for PBXNativeTarget "QR UniverseUITests" */;
 			buildPhases = (
+				1EBD3C515105372E3C14C99C /* [CP] Check Pods Manifest.lock */,
 				76FBE1C4217192C9007F8C8F /* Sources */,
 				76FBE1C5217192C9007F8C8F /* Frameworks */,
 				76FBE1C6217192C9007F8C8F /* Resources */,
@@ -250,6 +295,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EBD3C515105372E3C14C99C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QR UniverseUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B05A1E3F4BF2C797921EC12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QR Universe/Pods-QR Universe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QR Universe/Pods-QR Universe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA7C8B93C747E07B4493D30C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QR Universe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF643B12EFA8705041B798A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QR Universe/Pods-QR Universe-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVTextDetectorResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVTextDetectorResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QR Universe/Pods-QR Universe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE5247FF3F4C1D2F6A4C52E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QR UniverseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		76FBE1A5217192C6007F8C8F /* Sources */ = {
@@ -430,15 +598,17 @@
 		};
 		76FBE1D2217192C9007F8C8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66C3AA7FE93C663BACF2C8F1 /* Pods-QR Universe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8VY7TSAQP8;
 				INFOPLIST_FILE = "QR Universe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.QR-Universe";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.QR-Universe2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -447,15 +617,17 @@
 		};
 		76FBE1D3217192C9007F8C8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC7C097076829496D21F17AA /* Pods-QR Universe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8VY7TSAQP8;
 				INFOPLIST_FILE = "QR Universe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.QR-Universe";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.QR-Universe2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,6 +636,7 @@
 		};
 		76FBE1D5217192C9007F8C8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F610CF857C07D9B3502C2804 /* Pods-QR UniverseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +657,7 @@
 		};
 		76FBE1D6217192C9007F8C8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F00822F6114219AE055785E8 /* Pods-QR UniverseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +678,7 @@
 		};
 		76FBE1D8217192C9007F8C8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F63FF60C6409C12A74379DD3 /* Pods-QR UniverseUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -523,6 +698,7 @@
 		};
 		76FBE1D9217192C9007F8C8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF256AB115962B57E3E306E6 /* Pods-QR UniverseUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

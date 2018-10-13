@@ -92,7 +92,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             var address : String = ""
             var phoneNumber : String = ""
 
-            let charset = CharacterSet(charactersIn: "@")
+            let charset = CharacterSet(charactersIn: "@") //later used to only add emails
             
             var testString : NSString = finaltext as NSString
             let types : NSTextCheckingResult.CheckingType = [.address , .date, .phoneNumber, .link ]
@@ -140,12 +140,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         card.append(address)
         card.append(email)
             
-           print (card)
+        print (card)
             
-            
-            
-           
-     
+
             
             
         })
@@ -157,14 +154,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
-        
-        
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in imagePickerController.sourceType = .camera
-            self.present(imagePickerController, animated: true, completion: nil)
-
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+                
+                
+            }))
             
-        }))
-        
+        }
+        else {
+            print("Sorry cant take picture")
+        }
+       
         
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action:UIAlertAction) in imagePickerController.sourceType = .photoLibrary
             

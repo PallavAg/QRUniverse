@@ -13,7 +13,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     var textRecognizer: VisionTextRecognizer!
     var cloudTextRecognizer: VisionTextRecognizer!
-
+    
+    
+    @IBOutlet weak var textName: UILabel!
+    
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +65,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 if let tag = tag, tags.contains(tag) {
                     if let range = Range(tokenRange, in: finaltext) {
                         let name = finaltext[range]
-                        print ("\(name): \(tag)")
+                        if "\(tag)" == "NSLinguisticTag(_rawValue: Personal Name)"{
+                            print ("\(name): \(tag)")
+                        self.textName.text = "\(name)"
+                        }
                     }
                 }
             }

@@ -1,262 +1,133 @@
 //
-//  Copyright (c) 2018 Google Inc.
+//  ViewController.swift
+//  QR Universe
 //
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//
-//  http://www.apache.org/licenses/LICENSE-2.0
-//
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
+//  Created by Viraat Das on 10/13/18.
+//  Copyright © 2018 Viraat Das. All rights reserved.
 //
 
 import UIKit
 import FirebaseMLVision
 
-struct ImageDisplay {
-    let file: String
-    let name: String
-}
-
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
     var cloudTextRecognizer: VisionTextRecognizer!
-    
-    var frameSublayer = CALayer()
-    
+
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var pickerView: UIPickerView!
-    
-    let images = [
-        ImageDisplay(file: "do-not-feed-birds", name: "Image 1"),
-        ImageDisplay(file: "walk-on-grass", name: "Image 2"),
-        ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         let vision = Vision.vision()
-        textRecognizer = vision.onDeviceTextRecognizer()
+        //textRecognizer = vision.onDeviceTextRecognizer()
         cloudTextRecognizer = vision.cloudTextRecognizer()
-        
-        imageView.layer.addSublayer(frameSublayer)
-        pickerView.dataSource = self
-        pickerView.delegate = self
     }
     
-    // MARK: Actions
-    
-    @IBAction func findTextDidTouch(_ sender: UIButton) {
-        runTextRecognition(with: imageView.image!)
-    }
-    
-    @IBAction func findTextCloudDidTouch(_ sender: UIButton) {
-        runCloudTextRecognition(with: imageView.image!)
-    }
-    
-    // MARK: Text Recognition
-    
-    func runTextRecognition(with image: UIImage) {
-        let visionImage = VisionImage(image: image)
-        textRecognizer.process(visionImage, completion: { (features, error) in
-            self.processResult(from: features, error: error)
-        })
-    }
+//    func runTextRecognition(with image: UIImage) {
+//        let visionImage = VisionImage(image: image)
+//        textRecognizer.process(visionImage, completion: { (features, error) in
+//            self.processResult(from: features, error: error)
+//        })
+//    }
     
     func runCloudTextRecognition(with image: UIImage) {
         let visionImage = VisionImage(image: image)
-        cloudTextRecognizer.process(visionImage, completion: { (features, error) in
-            self.processResult(from: features, error: error)
-        })
-    }
-    
-    
-    // MARK: Image Drawing
-    
-    func processResult(from text: VisionText?, error: Error?) {
-        removeFrames()
-        guard let features = text, let image = imageView.image else {
-            return
-        }
-        for block in features.blocks {
-            for line in block.lines {
-                for element in line.elements {
-                    self.addFrameView(
-                        featureFrame: element.frame,
-                        imageSize: image.size,
-                        viewFrame: self.imageView.frame,
-                        text: element.text
-                    )
+        cloudTextRecognizer.process(visionImage, completion: { (possibleFeatures, error) in
+            guard let features = possibleFeatures else {
+                return
+            }
+            
+            var finaltext = ""
+            
+            for block in features.blocks {
+                for line in block.lines {
+                    for element in line.elements {
+                        finaltext += element.text + " "
+                    }
                 }
             }
-        }
-    }
-    
-    
-    /// Converts a feature frame to a frame UIView that is displayed over the image.
-    ///
-    /// - Parameters:
-    ///   - featureFrame: The rect of the feature with the same scale as the original image.
-    ///   - imageSize: The size of original image.
-    ///   - viewRect: The view frame rect on the screen.
-    private func addFrameView(featureFrame: CGRect, imageSize: CGSize, viewFrame: CGRect, text: String? = nil) {
-        print("Frame: \(featureFrame).")
-        
-        let viewSize = viewFrame.size
-        
-        // Find resolution for the view and image
-        let rView = viewSize.width / viewSize.height
-        let rImage = imageSize.width / imageSize.height
-        
-        // Define scale based on comparing resolutions
-        var scale: CGFloat
-        if rView > rImage {
-            scale = viewSize.height / imageSize.height
-        } else {
-            scale = viewSize.width / imageSize.width
-        }
-        
-        // Calculate scaled feature frame size
-        let featureWidthScaled = featureFrame.size.width * scale
-        let featureHeightScaled = featureFrame.size.height * scale
-        
-        // Calculate scaled feature frame top-left point
-        let imageWidthScaled = imageSize.width * scale
-        let imageHeightScaled = imageSize.height * scale
-        
-        let imagePointXScaled = (viewSize.width - imageWidthScaled) / 2
-        let imagePointYScaled = (viewSize.height - imageHeightScaled) / 2
-        
-        let featurePointXScaled = imagePointXScaled + featureFrame.origin.x * scale
-        let featurePointYScaled = imagePointYScaled + featureFrame.origin.y * scale
-        
-        // Define a rect for scaled feature frame
-        let featureRectScaled = CGRect(x: featurePointXScaled,
-                                       y: featurePointYScaled,
-                                       width: featureWidthScaled,
-                                       height: featureHeightScaled)
-        
-        drawFrame(featureRectScaled, text: text)
-    }
-    
-    /// Creates and draws a frame for the calculated rect as a sublayer.
-    ///
-    /// - Parameter rect: The rect to draw.
-    private func drawFrame(_ rect: CGRect, text: String? = nil) {
-        let bpath: UIBezierPath = UIBezierPath(rect: rect)
-        let rectLayer: CAShapeLayer = CAShapeLayer()
-        rectLayer.path = bpath.cgPath
-        rectLayer.strokeColor = Constants.lineColor
-        rectLayer.fillColor = Constants.fillColor
-        rectLayer.lineWidth = Constants.lineWidth
-        if let text = text {
-            let textLayer = CATextLayer()
-            textLayer.string = text
-            textLayer.fontSize = 12.0
-            textLayer.foregroundColor = Constants.lineColor
-            let center = CGPoint(x: rect.midX, y: rect.midY)
-            textLayer.position = center
-            textLayer.frame = rect
-            textLayer.alignmentMode = CATextLayerAlignmentMode.center
-            textLayer.contentsScale = UIScreen.main.scale
-            frameSublayer.addSublayer(textLayer)
-        }
-        frameSublayer.addSublayer(rectLayer)
-    }
-    
-    private func removeFrames() {
-        guard let sublayers = frameSublayer.sublayers else { return }
-        for sublayer in sublayers {
-            guard let frameLayer = sublayer as CALayer? else {
-                print("Failed to remove frame layer.")
-                continue
+            
+            print(finaltext)
+            // add final NLINGUISTICS
+            
+            let tagger = NSLinguisticTagger(tagSchemes: [.nameType], options: 0)
+            tagger.string = finaltext
+            
+            let range = NSRange(location: 0, length: finaltext.utf16.count)
+
+            let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace, .joinNames]
+            let tags: [NSLinguisticTag] = [.personalName, .placeName, .organizationName]
+            
+            tagger.enumerateTags(in: range, unit: .word, scheme: .nameType, options: options) { tag, tokenRange, stop in
+                if let tag = tag, tags.contains(tag) {
+                    if let range = Range(tokenRange, in: finaltext) {
+                        let name = finaltext[range]
+                        print ("\(name): \(tag)")
+                    }
+                }
             }
-            frameLayer.removeFromSuperlayer()
-        }
+            
+        })
+        
     }
     
-    func detectorOrientation(in image: UIImage) -> VisionDetectorImageOrientation {
-        switch image.imageOrientation {
-        case .up:
-            return .topLeft
-        case .down:
-            return .bottomRight
-        case .left:
-            return .leftBottom
-        case .right:
-            return .rightTop
-        case .upMirrored:
-            return .topRight
-        case .downMirrored:
-            return .bottomLeft
-        case .leftMirrored:
-            return .leftTop
-        case .rightMirrored:
-            return .rightBottom
-        }
-    }
-    
-    // MARK: UIPickerViewDelegate, UIPickerViewDataSource
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return images.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return images[row].name
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        removeFrames()
-        let imageDisplay = images[row]
-        imageView.image = UIImage(named: imageDisplay.file)
+    @IBAction func chooseImage(_ sender: Any) {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+
+            
+        }))
+        
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action:UIAlertAction) in imagePickerController.sourceType = .photoLibrary
+            
+            self.present(imagePickerController, animated: true, completion: nil)
+            
+            
+        }))
+        
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+        
+        
+        
+        
+        
     }
     
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+        imageView.image = image
+        
+        runCloudTextRecognition(with: image)
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+
+    }
     
-    
-    
-    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
-
-// MARK: - Fileprivate
-
-fileprivate enum Constants {
-    static let lineWidth: CGFloat = 3.0
-    static let lineColor = UIColor.yellow.cgColor
-    static let fillColor = UIColor.clear.cgColor
-}
-
-
-
-
-
-
-
-
-
-/*Copyright (c) 2016, Andrew Walz.
- 
- Redistribution and use in source and binary forms, with or without modification,are permitted provided that the following conditions are met:
- 
- 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
- 
- 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
- documentation and/or other materials provided with the distribution.
- 
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS
- BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-

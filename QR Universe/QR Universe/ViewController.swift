@@ -45,6 +45,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         do {
             self.carouselList = try Disk.retrieve("contacts.json", from: .caches, as: [Interest].self)
         } catch {

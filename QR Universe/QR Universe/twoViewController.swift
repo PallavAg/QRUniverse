@@ -15,7 +15,7 @@ class twoViewController: UIViewController {
     
     @IBOutlet weak var subjectText: UITextView!
     @IBOutlet weak var bodyText: UITextView!
-    var personName_2 = personeName
+    var personName_2 = personName
     //var personLastName = "Agarwal"
     var personEmail_2 = personEmail
     var personAddress_2 = personAddress

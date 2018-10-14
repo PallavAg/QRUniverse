@@ -10,7 +10,7 @@ import UIKit
 import FirebaseMLVision
 import MessageUI
 
-var personeName = ""
+var personName = ""
 //var personLastName = "Agarwal"
 var personEmail = ""
 var personAddress = ""
@@ -173,13 +173,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         card.append(email)
         
             
-            personeName = card[0]
+            personName = card[0]
         //var personLastName = "Agarwal"
             personEmail = card[3]
             personAddress = card[2]
             personPhone = card[1]
             
-            self.textName.text = personeName
+            self.textName.text = personName
             self.textEmail.text = personEmail
             self.textPhoneNumber.text = personPhone
             self.textAddress.text = personAddress
@@ -193,11 +193,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         })
         
     }
+  
     
     @IBAction func saveContact(_ sender: Any) {
-        var contact = Interest(title:(personeName + " "  +  personEmail + " " + personPhone + " " +  personAddress), featuredImage: UIImage(named: "f1")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8))
+        personName = textName.text!
+        personEmail = textEmail.text!
+        personPhone = textPhoneNumber.text!
+        personAddress = textAddress.text!
+        print ("NAME " + personName)
+        print ("EMAIL " + personEmail)
         
-        carouselList.append(contact)
+//        var contact = Interest(title:(personName + " "  +  personEmail + " " + personPhone + " " +  personAddress), featuredImage: UIImage(named: "f1")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8))
+//
+//
+//        carouselList.append(contact)
         
         
     }

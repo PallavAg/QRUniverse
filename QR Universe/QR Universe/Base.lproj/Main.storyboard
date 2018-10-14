@@ -130,7 +130,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdU-Mx-LxX">
-                                <rect key="frame" x="144" y="659" width="87" height="30"/>
+                                <rect key="frame" x="145" y="733" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Preferences"/>
                                 <connections>
@@ -138,7 +138,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9C-Bn-pJE">
-                                <rect key="frame" x="109" y="621" width="157" height="30"/>
+                                <rect key="frame" x="110" y="695" width="157" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Capture Business Card"/>
                                 <connections>
@@ -168,11 +168,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NgC-D0-MNY">
+                                <rect key="frame" x="24" y="516" width="321" height="127"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2ia-2s-GV8"/>
                     </view>
                     <connections>
+                        <outlet property="customMessage" destination="NgC-D0-MNY" id="Kwj-fT-9wb"/>
                         <outlet property="imageView" destination="GlM-LA-4xY" id="JbR-ml-3Yt"/>
                         <outlet property="textAddress" destination="Xjm-Le-neY" id="AIT-Mz-wdQ"/>
                         <outlet property="textEmail" destination="hVi-ht-GMr" id="e7R-jd-kf5"/>
@@ -182,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vyj-0o-0IM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="-111"/>
+            <point key="canvasLocation" x="1628" y="-111.57635467980296"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Up-Zu-jDW">

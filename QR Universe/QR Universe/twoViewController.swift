@@ -8,7 +8,7 @@
 
 import UIKit
 
-var textBodyRaw = "Dear %f, how are you? %f"
+var textBodyRaw = "Dear %f, how are you? %f \nIt was so great to meet you at MHacks 11\n %c"
 var textSubjectRaw = "follow up"
 
 class twoViewController: UIViewController {
@@ -23,8 +23,7 @@ class twoViewController: UIViewController {
     
 
     
-    
-    func parseBody(text: String) -> String {
+     func parseBody(text: String) -> String {
         var index1 = 0
         var potentialKey = false
         var str = NSMutableString()
@@ -50,7 +49,7 @@ class twoViewController: UIViewController {
                     index1 = index
                     
                     potentialKey = true
-                } else if (potentialKey == true && char == "f") { //first name %f
+                } else if (potentialKey == true && char == "f") { //name %f
                     
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
@@ -79,6 +78,8 @@ class twoViewController: UIViewController {
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
                     str.insert(personPhone_2, at: index1)
+                        
+                
                     break;
                     
                 } else {
@@ -105,14 +106,16 @@ class twoViewController: UIViewController {
         if self.isMovingFromParent {
             subject = subjectText.text
             textBodyRaw = bodyText.text
-            print("Raw: \(textBodyRaw)")
-            textBody = parseBody(text: textBodyRaw)
+            //textBody = parseBody(text: textBodyRaw)
             //bodyText.text = textBody
-            print ("TEXTBODY")
-            print (textBody)
             self.view.endEditing(true)
+            
+//            twoViewController.subjectTextEnvoy = subjectText.text
+//            twoViewController.bodyTextEnvoy = bodyText.text
             
         }
     }
     
 }
+
+

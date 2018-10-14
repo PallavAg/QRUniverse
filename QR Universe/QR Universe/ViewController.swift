@@ -17,7 +17,8 @@ var personEmail = ""
 var personAddress = ""
 var personPhone = ""
 var subject = "Follow Up"
-var textBody = "Dear %f, how are you? %f"
+var textBody = "Dear %f, how are you? %f \nIt was so great to meet you at MHacks 11\n %c"
+var personCustom = ""
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,MFMailComposeViewControllerDelegate {
     
@@ -39,6 +40,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var textAddress: UITextField!
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var customMessage: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -190,6 +193,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.textEmail.text = personEmail
             self.textPhoneNumber.text = personPhone
             self.textAddress.text = personAddress
+            self.customMessage.text = personCustom
             
     
         
@@ -207,6 +211,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         personEmail = textEmail.text!
         personPhone = textPhoneNumber.text!
         personAddress = textAddress.text!
+        personCustom = customMessage.text!
         print ("NAME " + personName)
         print ("EMAIL " + personEmail)
         
@@ -283,22 +288,31 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
    // var textBody = "Dear %f, how are you? %f"
 
     
-    @IBAction func sendEmail(_ sender: Any) {
-        let mailComposeViewController = configureMailController()
+    @IBAction func sendEmail(_ sender: twoViewController) {
+        //twoViewController().viewWillDisappear(true)
+//            subject = twoViewController.subjectTextEnvoy
+//            textBodyRaw = twoViewController.bodyTextEnvoy
+        textBody = parseBody(text: textBodyRaw)
+//            //bodyText.text = textBody
+        print("Raw: \(textBody)")
+        let mailComposeViewController = configureMailController(email: personEmail, subject: subject, body: textBody)
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposeViewController, animated: true, completion: nil)
         } else {
             showMailError()
         }
+        
+        
+        
     }
     
-    func configureMailController() -> MFMailComposeViewController {
+    func configureMailController(email: String, subject: String, body: String) -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        var subject = "Follow up"
-        mailComposerVC.setToRecipients(["\(personEmail)"])
+        let subject = "Follow up"
+        mailComposerVC.setToRecipients(["\(email)"])
         mailComposerVC.setSubject(subject)
-        mailComposerVC.setMessageBody(textBody, isHTML: false)
+        mailComposerVC.setMessageBody(body, isHTML: false)
         
         return mailComposerVC
     }
@@ -313,4 +327,85 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
+    
+    
+    func parseBody(text: String) -> String {
+        var index1 = 0
+        var potentialKey = false
+        var str = NSMutableString()
+        str.append(text)
+        var check = "" as NSMutableString
+        
+        var counter = 0
+        for (index, char) in text.enumerated() {
+            
+            if (char == "%"){
+                counter+=1
+            }
+        }
+        var looper = 0
+        
+        while looper < counter+1 {
+            
+            looper += 1
+            
+            for (index, char) in (str as String).enumerated() {
+                if (char == "%") {
+                    
+                    index1 = index
+                    
+                    potentialKey = true
+                } else if (potentialKey == true && char == "f") { //name %f
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 2))
+                    str.insert(personName, at: index1)
+                    
+                    break;
+                    
+                }
+                    //                else if (potentialKey == true && char == "l") { //last name %l
+                    //
+                    //                    potentialKey = false
+                    //                    str.deleteCharacters(in: NSMakeRange(index1, 2))
+                    //                    str.insert(personLastName, at: index1)
+                    //                    break;
+                    //
+                    //                }
+                else if (potentialKey == true && char == "a") { //Address %a
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 2))
+                    str.insert(personAddress, at: index1)
+                    break;
+                    
+                } else if (potentialKey == true && char == "p") { //Phone %p
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 2))
+                    str.insert(personPhone, at: index1)
+                    
+                    
+                    break;
+                    
+                } else if (potentialKey == true && char == "c") { //Custom message %c
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 2))
+                    str.insert(personCustom, at: index1)
+                    
+                    
+                    break;
+                    
+                } else {
+                    potentialKey = false
+                }
+            }
+        }
+        
+        return str as String
+    }
+    
+    
+    
 }

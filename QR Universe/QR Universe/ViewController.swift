@@ -16,21 +16,30 @@ var personEmail = ""
 var personAddress = ""
 var personPhone = ""
 var subject = "Follow Up"
-var textBody = "Dear %d, how are you? %d"
+var textBody = "Dear %f, how are you? %f"
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,MFMailComposeViewControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
     var cloudTextRecognizer: VisionTextRecognizer!
-    
-  
 
-    @IBOutlet weak var textName: UILabel!
+//    @IBOutlet weak var textName: UITextField!
+//
+//    @IBOutlet weak var textEmail: UITextField!
+//    @IBOutlet weak var textPhoneNumber: UITextField!
+    
+    @IBOutlet weak var textName: UITextField!
+    
+    @IBOutlet weak var textEmail: UITextField!
+    
+    @IBOutlet weak var textPhoneNumber: UITextField!
+    
+    @IBOutlet weak var textAddress: UITextField!
     
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         let vision = Vision.vision()
         //textRecognizer = vision.onDeviceTextRecognizer()
         cloudTextRecognizer = vision.cloudTextRecognizer()
@@ -80,7 +89,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                         print ("\(name): \(tag)")
                         if "\(tag)" == "NSLinguisticTag(_rawValue: PersonalName)" && fullName == ""{
                             fullName = ("\(name)")
-                            self.textName.text = "\(name)"
+                            
                         }
                         if "\(tag)" == "NSLinguisticTag(_rawValue: OrganizationName)"{
                             
@@ -165,6 +174,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             personEmail = card[3]
             personAddress = card[2]
             personPhone = card[1]
+            
+            self.textName.text = personeName
+            self.textEmail.text = personEmail
+            self.textPhoneNumber.text = personPhone
+            self.textAddress.text = personAddress
             
         print (card)
             

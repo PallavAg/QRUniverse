@@ -8,7 +8,7 @@
 
 import UIKit
 
-var textBodyRaw = "Dear %f, how are you? %l"
+var textBodyRaw = "Dear %f, how are you? %f"
 var textSubjectRaw = "follow up"
 
 class twoViewController: UIViewController {
@@ -20,6 +20,8 @@ class twoViewController: UIViewController {
     var personEmail_2 = personEmail
     var personAddress_2 = personAddress
     var personPhone_2 = personPhone
+    
+
     
     
     func parseBody(text: String) -> String {
@@ -53,6 +55,7 @@ class twoViewController: UIViewController {
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
                     str.insert(personName_2, at: index1)
+                    
                     break;
                     
                 }
@@ -93,6 +96,7 @@ class twoViewController: UIViewController {
         print("Raw: \(textBodyRaw)")
         bodyText.text = textBodyRaw
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,6 +107,9 @@ class twoViewController: UIViewController {
             textBodyRaw = bodyText.text
             print("Raw: \(textBodyRaw)")
             textBody = parseBody(text: textBodyRaw)
+            //bodyText.text = textBody
+            print ("TEXTBODY")
+            print (textBody)
             self.view.endEditing(true)
             
         }

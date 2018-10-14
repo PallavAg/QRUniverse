@@ -215,7 +215,7 @@
         <!--Two View Controller-->
         <scene sceneID="Fxu-qm-99t">
             <objects>
-                <viewController id="Ggc-D1-mvP" customClass="twoViewController" customModule="SendEmail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ggc-D1-mvP" customClass="twoViewController" customModule="QR_Universe" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mVq-Mx-egA"/>
                         <viewControllerLayoutGuide type="bottom" id="fI2-Yb-ced"/>

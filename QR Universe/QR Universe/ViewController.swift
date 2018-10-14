@@ -43,6 +43,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let vision = Vision.vision()
         //textRecognizer = vision.onDeviceTextRecognizer()
         cloudTextRecognizer = vision.cloudTextRecognizer()
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        
     }
     
 //    func runTextRecognition(with image: UIImage) {
@@ -247,7 +250,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     
     //var textBody = "Dear \(personeName) \(personLastName),\n How %d are you doing? "
-    var textBody = "Dear %d, how are you? %d"
+   // var textBody = "Dear %f, how are you? %f"
 
     
     @IBAction func sendEmail(_ sender: Any) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-var textBodyRaw = "Dear %f, how are you? %f \nIt was so great to meet you at MHacks 11\n %c"
+var textBodyRaw = "Dear %n, how are you? %n \nIt was so great to meet you at MHacks 11\n %ps"
 var textSubjectRaw = "follow up"
 
 class twoViewController: UIViewController {
@@ -51,37 +51,60 @@ class twoViewController: UIViewController {
                     index1 = index
                     
                     potentialKey = true
-                } else if (potentialKey == true && char == "f") { //name %f
+                } else if (potentialKey == true && char == "n") { //Contact Name %n
                     
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
-                    str.insert(personName_2, at: index1)
+                    str.insert(personName, at: index1)
                     
                     break;
                     
-                }
-//                else if (potentialKey == true && char == "l") { //last name %l
-//                    
-//                    potentialKey = false
-//                    str.deleteCharacters(in: NSMakeRange(index1, 2))
-//                    str.insert(personLastName, at: index1)
-//                    break;
-//                    
-//                }
-                else if (potentialKey == true && char == "a") { //Address %a
+                } else if (potentialKey == true && char == "a") { //Contact Address %a
                     
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
-                    str.insert(personAddress_2, at: index1)
+                    str.insert(personAddress, at: index1)
+                    
                     break;
                     
-                } else if (potentialKey == true && char == "p") { //Phone %p
+                } else if (potentialKey == true && char == "#") { //Phone %#
                     
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
-                    str.insert(personPhone_2, at: index1)
-                        
-                
+                    str.insert(personPhone, at: index1)
+                    
+                    break;
+                    
+                } else if (potentialKey == true && char == "p") { //Custom message %ps
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 3))
+                    str.insert(personCustom, at: index1)
+                    
+                    break;
+                    
+                } else if (potentialKey == true && char == "l") { //Location %loc
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 4))
+                    str.insert(personLocation, at: index1)
+                    
+                    break;
+                    
+                } else if (potentialKey == true && char == "e") { //Event %event
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 6))
+                    str.insert(personEvent, at: index1)
+                    
+                    break;
+                    
+                } else if (potentialKey == true && char == "c") { //Calendy link %cal
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 4))
+                    str.insert(personCalendy, at: index1)
+                    
                     break;
                     
                 } else {
@@ -92,6 +115,9 @@ class twoViewController: UIViewController {
         
         return str as String
     }
+    @IBOutlet weak var event: UITextField!
+    @IBOutlet weak var location: UITextField!
+    @IBOutlet weak var calendly: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +138,10 @@ class twoViewController: UIViewController {
             //bodyText.text = textBody
             self.view.endEditing(true)
             
+            personCalendy = calendly.text!
+            personLocation = location.text!
+            personEvent = event.text!
+            
 //            twoViewController.subjectTextEnvoy = subjectText.text
 //            twoViewController.bodyTextEnvoy = bodyText.text
             
@@ -121,7 +151,7 @@ class twoViewController: UIViewController {
         subjectText.text = "Great to Meet you"
         subject = subjectText.text
         
-        bodyText.text = "Hi %f,\n\nIt was so great to meet you at event. \n\n%ps"
+        bodyText.text = "Hi %n,\n\nIt was so great to meet you at event. \n\n%ps"
         textBodyRaw = bodyText.text
     }
 
@@ -129,7 +159,7 @@ class twoViewController: UIViewController {
         subjectText.text = "Thank you!"
         subject = subjectText.text
 
-        bodyText.text = "Hi %f,\n\nThank you very much for your help at event!\n\n%ps"
+        bodyText.text = "Hi %n,\n\nThank you very much for your help at event!\n\n%ps"
         textBodyRaw = bodyText.text
 
     }
@@ -139,7 +169,7 @@ class twoViewController: UIViewController {
         subject = subjectText.text
 
 
-        bodyText.text = "Hi %f,\n\nThank you for this interview opportunity. \n\nI look forward to hearing from you. \n\n%ps"
+        bodyText.text = "Hi %n,\n\nThank you for this interview opportunity. \n\nI look forward to hearing from you. \n\n%ps"
         textBodyRaw = bodyText.text
     }
 
@@ -147,9 +177,11 @@ class twoViewController: UIViewController {
         subjectText.text = "How have you been?"
         subject = subjectText.text
         
-        bodyText.text = "Hi %f,\n\nIt has been so long since we last talked. It would be great to catch-up and grab coffee sometime soon!\n\n%ps"
+        bodyText.text = "Hi %n,\n\nIt has been so long since we last talked. It would be great to catch-up and grab coffee sometime soon!\n\n%ps"
         textBodyRaw = bodyText.text
     }
+    
+ 
     
     
     

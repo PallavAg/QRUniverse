@@ -12,13 +12,15 @@ import MessageUI
 import Disk
 
 var personName = ""
-//var personLastName = "Agarwal"
 var personEmail = ""
 var personAddress = ""
 var personPhone = ""
 var subject = "Follow Up"
-var textBody = "Dear %f, how are you? %f \nIt was so great to meet you at MHacks 11\n %c"
+var textBody = "Dear %n, how are you? %n \nIt was so great to meet you at MHacks 11\n %ps"
 var personCustom = ""
+var personCalendy = ""
+var personLocation = ""
+var personEvent = ""
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,MFMailComposeViewControllerDelegate {
     
@@ -195,11 +197,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.textPhoneNumber.text = personPhone
             self.textAddress.text = personAddress
             self.customMessage.text = personCustom
-            
-    
-        
-            
-
             
             
         })
@@ -385,12 +382,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             looper += 1
             
             for (index, char) in (str as String).enumerated() {
+                print("index \(index) char: + \(char)")
                 if (char == "%") {
                     
                     index1 = index
                     
                     potentialKey = true
-                } else if (potentialKey == true && char == "f") { //name %f
+                } else if (potentialKey == true && char == "n") { //Contact Name %n
                     
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
@@ -398,37 +396,51 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     
                     break;
                     
-                }
-                    //                else if (potentialKey == true && char == "l") { //last name %l
-                    //
-                    //                    potentialKey = false
-                    //                    str.deleteCharacters(in: NSMakeRange(index1, 2))
-                    //                    str.insert(personLastName, at: index1)
-                    //                    break;
-                    //
-                    //                }
-                else if (potentialKey == true && char == "a") { //Address %a
+                } else if (potentialKey == true && char == "a") { //Contact Address %a
                     
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
                     str.insert(personAddress, at: index1)
+                    
                     break;
                     
-                } else if (potentialKey == true && char == "p") { //Phone %p
+                } else if (potentialKey == true && char == "#") { //Phone %#
                     
                     potentialKey = false
                     str.deleteCharacters(in: NSMakeRange(index1, 2))
                     str.insert(personPhone, at: index1)
                     
+                    break;
+                    
+                } else if (potentialKey == true && char == "p") { //Custom message %ps
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 3))
+                    str.insert(personCustom, at: index1)
                     
                     break;
                     
-                } else if (potentialKey == true && char == "c") { //Custom message %c
+                } else if (potentialKey == true && char == "l") { //Location %loc
                     
                     potentialKey = false
-                    str.deleteCharacters(in: NSMakeRange(index1, 2))
-                    str.insert(personCustom, at: index1)
+                    str.deleteCharacters(in: NSMakeRange(index1, 4))
+                    str.insert(personLocation, at: index1)
                     
+                    break;
+                    
+                } else if (potentialKey == true && char == "e") { //Event %event
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 6))
+                    str.insert(personEvent, at: index1)
+                    
+                    break;
+                    
+                } else if (potentialKey == true && char == "c") { //Calendy link %cal
+                    
+                    potentialKey = false
+                    str.deleteCharacters(in: NSMakeRange(index1, 4))
+                    str.insert(personCalendy, at: index1)
                     
                     break;
                     

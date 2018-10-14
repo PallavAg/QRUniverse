@@ -216,7 +216,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         print ("NAME " + personName)
         print ("EMAIL " + personEmail)
         
-        var contact = Interest(title:(personName + "\n"  +  personEmail + "\n" + personPhone + "\n" +  personAddress))
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .medium
+        
+        let dateString = dateFormatter.string(from: date)
+        
+        
+        var contact = Interest(title:(personName + "\n"  +  personEmail + "\n" + personPhone + "\n" +  personAddress + "\n\n" + dateString))
         
         do {
             try Disk.append(contact, to: "contacts.json", in: .caches)

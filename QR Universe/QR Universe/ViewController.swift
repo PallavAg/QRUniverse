@@ -17,7 +17,7 @@ var personEmail = ""
 var personAddress = ""
 var personPhone = ""
 var subject = "Follow Up"
-var textBody = "Dear %n, how are you? %n \nIt was so great to meet you at MHacks 11\n %ps"
+var textBody = "Dear %n,\n\nHow are you? \n\nIt was so great to meet you at the event\n\n %ps"
 var personCustom = ""
 var personCalendy = ""
 var personLocation = ""
@@ -163,10 +163,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
 
             
-            
-            
-            
-            
             //add remaining tags (enmails, address, phone number)
             
            
@@ -309,7 +305,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
                 
-                
             }))
             
         }
@@ -317,7 +312,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             print("Sorry cant take picture")
         }
        
-        
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action:UIAlertAction) in imagePickerController.sourceType = .photoLibrary
             
             self.present(imagePickerController, animated: true, completion: nil)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-var textBodyRaw = "Dear %n, how are you? %n \nIt was so great to meet you at MHacks 11\n %ps"
+var textBodyRaw = "Dear %n,\n\nHow are you? \n\nIt was so great to meet you at the event\n\n %ps"
 var textSubjectRaw = "follow up"
 
 class twoViewController: UIViewController {
@@ -125,7 +125,7 @@ class twoViewController: UIViewController {
         print("Raw: \(textBodyRaw)")
         bodyText.text = textBodyRaw
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
-        event.text = personEmail_2
+        event.text = personEvent
         location.text = personLocation
         calendly.text = personCalendy
         
@@ -172,7 +172,7 @@ class twoViewController: UIViewController {
         subject = subjectText.text
 
 
-        bodyText.text = "Hi %n,\n\nThank you for this interview opportunity. \n\nI look forward to hearing from you. \n\n%ps"
+        bodyText.text = "Hi %n,\n\nThank you for this interview opportunity at %loc. \n\nI look forward to seeing you at %event.\n\n%ps"
         textBodyRaw = bodyText.text
     }
 
@@ -180,7 +180,7 @@ class twoViewController: UIViewController {
         subjectText.text = "How have you been?"
         subject = subjectText.text
         
-        bodyText.text = "Hi %n,\n\nIt has been so long since we last talked. It would be great to catch-up and grab coffee sometime soon!\n\n%ps"
+        bodyText.text = "Hi %n,\n\nIt's Amulya. My number is 7656435624. It would be great to catch-up and grab coffee sometime soon! \n\nBy the way, is this the best number to reach you? %#\n\n%ps"
         textBodyRaw = bodyText.text
     }
     
@@ -194,7 +194,6 @@ class twoViewController: UIViewController {
     @IBAction func darkOrangeAction(_ sender: Any) {
         colorInteger = 1
     }
-    
     
     @IBAction func greyAction(_ sender: Any) {
         colorInteger = 2

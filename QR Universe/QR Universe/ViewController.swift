@@ -17,6 +17,7 @@ var personAddress = ""
 var personPhone = ""
 var subject = "Follow Up"
 var textBody = "Dear %f, how are you? %f"
+var carouselList = [Interest] ()
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,MFMailComposeViewControllerDelegate {
     
@@ -183,7 +184,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.textPhoneNumber.text = personPhone
             self.textAddress.text = personAddress
             
-        print (card)
+    
+        
             
 
             
@@ -191,6 +193,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         })
         
     }
+    
+    @IBAction func saveContact(_ sender: Any) {
+        var contact = Interest(title:(personeName + " "  +  personEmail + " " + personPhone + " " +  personAddress), featuredImage: UIImage(named: "f1")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8))
+        
+        carouselList.append(contact)
+        
+        
+    }
+    
     
     @IBAction func chooseImage(_ sender: Any) {
         

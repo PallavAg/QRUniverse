@@ -153,6 +153,9 @@
                                 <rect key="frame" x="16" y="714" width="111" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save Contact"/>
+                                <connections>
+                                    <action selector="saveContact:" destination="LRg-Fd-D0t" eventType="touchUpInside" id="lfk-wK-gly"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GlM-LA-4xY">
                                 <rect key="frame" x="16" y="99" width="343" height="221"/>

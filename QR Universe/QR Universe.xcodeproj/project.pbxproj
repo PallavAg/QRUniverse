@@ -11,6 +11,10 @@
 		76310CC72172582F00E0110A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76310CC62172582F00E0110A /* ViewController.swift */; };
 		76310CC92172A2D100E0110A /* twoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76310CC82172A2D100E0110A /* twoViewController.swift */; };
 		76310CCD2172CFFE00E0110A /* ColelctionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76310CCC2172CFFE00E0110A /* ColelctionTest.swift */; };
+		76310CD92172E48700E0110A /* InterestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76310CD62172E48600E0110A /* InterestCollectionViewCell.swift */; };
+		76310CDA2172E48700E0110A /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76310CD72172E48600E0110A /* InterestsViewController.swift */; };
+		76310CDB2172E48700E0110A /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76310CD82172E48700E0110A /* Interest.swift */; };
+		76310CDD2172E81700E0110A /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76310CDC2172E81700E0110A /* Codable.swift */; };
 		7694D6ED2171E4FD005D415F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7694D6EB2171E4FD005D415F /* GoogleService-Info.plist */; };
 		76FBE1AD217192C6007F8C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBE1AC217192C6007F8C8F /* AppDelegate.swift */; };
 		76FBE1AF217192C6007F8C8F /* MLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBE1AE217192C6007F8C8F /* MLKit.swift */; };
@@ -48,6 +52,10 @@
 		76310CC62172582F00E0110A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		76310CC82172A2D100E0110A /* twoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twoViewController.swift; sourceTree = "<group>"; };
 		76310CCC2172CFFE00E0110A /* ColelctionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColelctionTest.swift; sourceTree = "<group>"; };
+		76310CD62172E48600E0110A /* InterestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestCollectionViewCell.swift; sourceTree = "<group>"; };
+		76310CD72172E48600E0110A /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
+		76310CD82172E48700E0110A /* Interest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
+		76310CDC2172E81700E0110A /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		7694D6EB2171E4FD005D415F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/mlkit-ios-master 2/text-recognition/final/text-recognition/text-recognition/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76FBE1A9217192C6007F8C8F /* QR Universe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QR Universe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FBE1AC217192C6007F8C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,10 +147,14 @@
 				76310CC62172582F00E0110A /* ViewController.swift */,
 				76310CCC2172CFFE00E0110A /* ColelctionTest.swift */,
 				76310CC82172A2D100E0110A /* twoViewController.swift */,
+				76310CD82172E48700E0110A /* Interest.swift */,
+				76310CD62172E48600E0110A /* InterestCollectionViewCell.swift */,
+				76310CD72172E48600E0110A /* InterestsViewController.swift */,
 				76FBE1B0217192C6007F8C8F /* Main.storyboard */,
 				76FBE1B3217192C9007F8C8F /* Assets.xcassets */,
 				76FBE1B5217192C9007F8C8F /* LaunchScreen.storyboard */,
 				7694D6EB2171E4FD005D415F /* GoogleService-Info.plist */,
+				76310CDC2172E81700E0110A /* Codable.swift */,
 			);
 			path = "QR Universe";
 			sourceTree = "<group>";
@@ -339,6 +351,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QR Universe/Pods-QR Universe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Disk/Disk.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -350,6 +363,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Disk.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -435,11 +449,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76310CD92172E48700E0110A /* InterestCollectionViewCell.swift in Sources */,
 				76310CC72172582F00E0110A /* ViewController.swift in Sources */,
 				76310CCD2172CFFE00E0110A /* ColelctionTest.swift in Sources */,
 				76FBE1AF217192C6007F8C8F /* MLKit.swift in Sources */,
 				76310CC92172A2D100E0110A /* twoViewController.swift in Sources */,
 				76FBE1AD217192C6007F8C8F /* AppDelegate.swift in Sources */,
+				76310CDD2172E81700E0110A /* Codable.swift in Sources */,
+				76310CDA2172E48700E0110A /* InterestsViewController.swift in Sources */,
+				76310CDB2172E48700E0110A /* Interest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

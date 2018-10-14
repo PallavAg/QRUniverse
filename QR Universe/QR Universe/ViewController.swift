@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseMLVision
 import MessageUI
+import Disk
 
 var personName = ""
 //var personLastName = "Agarwal"
@@ -17,12 +18,12 @@ var personAddress = ""
 var personPhone = ""
 var subject = "Follow Up"
 var textBody = "Dear %f, how are you? %f"
-var carouselList = [Interest] ()
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,MFMailComposeViewControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
     var cloudTextRecognizer: VisionTextRecognizer!
+    var carouselList = [Interest] ()
 
 //    @IBOutlet weak var textName: UITextField!
 //
@@ -40,6 +41,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            self.carouselList = try Disk.retrieve("contacts.json", from: .caches, as: [Interest].self)
+        } catch {
+            print("loading list failed")
+        }
         
         let vision = Vision.vision()
         //textRecognizer = vision.onDeviceTextRecognizer()
@@ -117,7 +124,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
             let charset = CharacterSet(charactersIn: "@") //later used to only add emails
             
-            var testString : NSString = finaltext as NSString
+            let testString : NSString = finaltext as NSString
             let types : NSTextCheckingResult.CheckingType = [.address , .date, .phoneNumber, .link ]
             let dataDetector = try? NSDataDetector(types: types.rawValue)
           
@@ -203,12 +210,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         print ("NAME " + personName)
         print ("EMAIL " + personEmail)
         
-//        var contact = Interest(title:(personName + " "  +  personEmail + " " + personPhone + " " +  personAddress), featuredImage: UIImage(named: "f1")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8))
-//
-//
-//        carouselList.append(contact)
+        var contact = Interest(title:(personName + " "  +  personEmail + " " + personPhone + " " +  personAddress))
         
+        do {
+            try Disk.append(contact, to: "contacts.json", in: .caches)
+        } catch {
+            print("failed to save")
+        }
         
+        carouselList.append(contact)
     }
     
     

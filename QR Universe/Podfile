@@ -9,7 +9,7 @@ target 'QR Universe' do
   pod 'Firebase/Core'
   pod 'Firebase/MLVision'
 
-
+  pod 'Disk', '~> 0.4.0'
   # If using an on-device API:
   pod 'Firebase/MLVisionTextModel'
   target 'QR UniverseTests' do

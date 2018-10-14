@@ -1,4 +1,5 @@
 PODS:
+  - Disk (0.4.0)
   - Firebase/Core (5.10.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.2.0)
@@ -89,12 +90,14 @@ PODS:
   - Protobuf (3.6.1)
 
 DEPENDENCIES:
+  - Disk (~> 0.4.0)
   - Firebase/Core
   - Firebase/MLVision
   - Firebase/MLVisionTextModel
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Disk
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -112,6 +115,7 @@ SPEC REPOS:
     - Protobuf
 
 SPEC CHECKSUMS:
+  Disk: ef2956657d5bb56034b38b29b352170165226440
   Firebase: 6691d47562a780c26281ce8464518faafc90c610
   FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
   FirebaseCore: c6079de64c1a87000e52e9b408dddcadc901177f
@@ -128,6 +132,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
 
-PODFILE CHECKSUM: 5d601fe7e170d02528973b787468aeb1024c4c4a
+PODFILE CHECKSUM: f0579dbdf07a3f8220fa778c9668179e3af7b0e6
 
 COCOAPODS: 1.5.3

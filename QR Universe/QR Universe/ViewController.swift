@@ -10,6 +10,7 @@ import UIKit
 import FirebaseMLVision
 import MessageUI
 import Disk
+import Contacts
 
 var personName = ""
 var personEmail = ""
@@ -21,6 +22,8 @@ var personCustom = ""
 var personCalendy = ""
 var personLocation = ""
 var personEvent = ""
+
+var colorInteger = 0
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,MFMailComposeViewControllerDelegate {
     
@@ -44,6 +47,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var customMessage: UITextView!
     
+    var store: CNContactStore!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +65,47 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
+        store = CNContactStore()
+        checkContactsAccess()
+    }
+    
+    private func checkContactsAccess() {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        // Update our UI if the user has granted access to their Contacts
+        case .authorized:
+            self.accessGrantedForContacts()
+            
+        // Prompt the user for access to Contacts if there is no definitive answer
+        case .notDetermined :
+            self.requestContactsAccess()
+            
+        // Display a message if the user has denied or restricted access to Contacts
+        case .denied,
+             .restricted:
+            let alert = UIAlertController(title: "Privacy Warning!",
+                                          message: "Permission was not granted for Contacts.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func requestContactsAccess() {
+        store.requestAccess(for: .contacts) {granted, error in
+            if granted {
+                DispatchQueue.main.async {
+                    self.accessGrantedForContacts()
+                    return
+                }
+            }
+        }
+    }
+    
+    // This method is called when the user has granted access to their address book data.
+    private func accessGrantedForContacts() {
+        //Update UI for grated state.
+        //...
+        print("access granted for contacts!")
     }
     
 //    func runTextRecognition(with image: UIImage) {
@@ -220,6 +266,27 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         let dateString = dateFormatter.string(from: date)
         
+        do{
+            let contact = CNMutableContact()
+            contact.givenName = String(personName.split(separator: " ")[0])
+            contact.familyName = String(personName.split(separator: " ")[1])
+            contact.phoneNumbers = [CNLabeledValue(
+                label:CNLabelPhoneNumberiPhone,
+                value:CNPhoneNumber(stringValue:personPhone)),
+                                    CNLabeledValue(
+                                        label:CNLabelPhoneNumberiPhone,
+                                        value:CNPhoneNumber(stringValue:personPhone))]
+            
+            let workEmail = CNLabeledValue(label:CNLabelWork, value:personEmail as NSString)
+            contact.emailAddresses = [workEmail]
+            
+            let saveRequest = CNSaveRequest()
+            saveRequest.add(contact, toContainerWithIdentifier:nil)
+            try store.execute(saveRequest)
+            print("saved")
+        }catch{
+            print("error")
+        }
         
         var contact = Interest(title:(personName + "\n"  +  personEmail + "\n" + personPhone + "\n" +  personAddress + "\n\n" + dateString))
         

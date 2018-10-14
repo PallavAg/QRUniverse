@@ -14,7 +14,7 @@ class InterestCollectionViewCell: UICollectionViewCell
     @IBOutlet weak var featuredImageView: UIImageView!
     @IBOutlet weak var interestTitleLabel: UILabel!
     @IBOutlet weak var backgroundColorView: UIView!
-    
+  
     var interest: Interest? {
         didSet {
             self.updateUI()
@@ -27,7 +27,9 @@ class InterestCollectionViewCell: UICollectionViewCell
             //featuredImageView.image = interest.featuredImage
             interestTitleLabel.text = interest.title
             //backgroundColorView.backgroundColor = interest.color
-            let randomInt = Int.random(in: 0..<6)
+            
+           let randomInt = Int.random(in: 0..<6)
+            print (randomInt)
             switch randomInt {
             case 0:
                 backgroundColorView.backgroundColor = UIColor(red: 105/255.0, green: 80/255.0, blue: 227/255.0, alpha: 0.8)

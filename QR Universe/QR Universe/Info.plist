@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) use</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This application imports contacts to the address book.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>$(PRODUCT_NAME) use</string>
 	<key>UILaunchStoryboardName</key>

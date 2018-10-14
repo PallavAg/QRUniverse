@@ -11,8 +11,9 @@ import UIKit
 struct Interest: Codable {
     let title: String
 //    let featuredImage: ImageWrapper
-//    let color: Color
+    //let color: Color
     //let color: Int
+    // let color: Int
 }
 
 

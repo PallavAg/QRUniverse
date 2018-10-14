@@ -125,6 +125,9 @@ class twoViewController: UIViewController {
         print("Raw: \(textBodyRaw)")
         bodyText.text = textBodyRaw
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
+        event.text = personEmail_2
+        location.text = personLocation
+        calendly.text = personCalendy
         
     }
     
@@ -181,9 +184,33 @@ class twoViewController: UIViewController {
         textBodyRaw = bodyText.text
     }
     
+    //Assign colors
  
     
+    @IBAction func orangeAction(_ sender: Any) {
+        colorInteger = 0
+    }
     
+    @IBAction func darkOrangeAction(_ sender: Any) {
+        colorInteger = 1
+    }
+    
+    
+    @IBAction func greyAction(_ sender: Any) {
+        colorInteger = 2
+    }
+    
+    @IBAction func purpleAction(_ sender: Any) {
+        colorInteger = 3
+    }
+    
+    @IBAction func greenAction(_ sender: Any) {
+        colorInteger = 4
+    }
+    
+    @IBAction func tealAction(_ sender: Any) {
+        colorInteger = 5
+    }
     
 }
 

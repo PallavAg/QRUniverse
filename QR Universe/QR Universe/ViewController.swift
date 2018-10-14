@@ -210,7 +210,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         print ("NAME " + personName)
         print ("EMAIL " + personEmail)
         
-        var contact = Interest(title:(personName + " "  +  personEmail + " " + personPhone + " " +  personAddress))
+        var contact = Interest(title:(personName + "\n"  +  personEmail + "\n" + personPhone + "\n" +  personAddress))
         
         do {
             try Disk.append(contact, to: "contacts.json", in: .caches)

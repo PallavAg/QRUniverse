@@ -17,6 +17,8 @@ class InterestsViewController: UIViewController
 
     let cellScaling: CGFloat = 0.6
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,17 +43,38 @@ class InterestsViewController: UIViewController
         collectionView?.delegate = self
     }
     
+    @IBAction func clearAction(_ sender: Any) {
+        viewDidAppear(true)
+
+        do {
+
+            try Disk.remove("contacts.json", from: .caches)
+            self.interests = [Interest]()
+            self.collectionView.reloadData()
+        } catch {
+            print ("not working")
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        do {
+            self.interests = try Disk.retrieve("contacts.json", from: .caches, as: [Interest].self)
+            self.collectionView.reloadData()
+        } catch {
+            print("loading list failed")
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (self.isMovingFromParent)  {
             // we're already on the navigation stack
             // another controller must have been popped off
-            do {
-                self.interests = try Disk.retrieve("contacts.json", from: .caches, as: [Interest].self)
-                self.collectionView.reloadData()
-            } catch {
-                print("loading list failed")
-            }
+//            do {
+//                self.interests = try Disk.retrieve("contacts.json", from: .caches, as: [Interest].self)
+//                self.collectionView.reloadData()
+//            } catch {
+//                print("loading list failed")
+//            }
         }
     }
 }

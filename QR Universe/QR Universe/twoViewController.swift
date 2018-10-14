@@ -13,6 +13,8 @@ var textSubjectRaw = "follow up"
 
 class twoViewController: UIViewController {
     
+   
+    
     @IBOutlet weak var subjectText: UITextView!
     @IBOutlet weak var bodyText: UITextView!
     var personName_2 = personName
@@ -115,6 +117,41 @@ class twoViewController: UIViewController {
             
         }
     }
+    @IBAction func greetingsAction(_ sender: Any) {
+        subjectText.text = "Great to Meet you"
+        subject = subjectText.text
+        
+        bodyText.text = "Hi %f,\n\nIt was so great to meet you at event. \n\n%ps"
+        textBodyRaw = bodyText.text
+    }
+
+    @IBAction func thanksAction(_ sender: Any) {
+        subjectText.text = "Thank you!"
+        subject = subjectText.text
+
+        bodyText.text = "Hi %f,\n\nThank you very much for your help at event!\n\n%ps"
+        textBodyRaw = bodyText.text
+
+    }
+
+    @IBAction func interviewAction(_ sender: Any) {
+        subjectText.text = "Excited for this opportunity!"
+        subject = subjectText.text
+
+
+        bodyText.text = "Hi %f,\n\nThank you for this interview opportunity. \n\nI look forward to hearing from you. \n\n%ps"
+        textBodyRaw = bodyText.text
+    }
+
+    @IBAction func checkInAction(_ sender: Any) {
+        subjectText.text = "How have you been?"
+        subject = subjectText.text
+        
+        bodyText.text = "Hi %f,\n\nIt has been so long since we last talked. It would be great to catch-up and grab coffee sometime soon!\n\n%ps"
+        textBodyRaw = bodyText.text
+    }
+    
+    
     
 }
 

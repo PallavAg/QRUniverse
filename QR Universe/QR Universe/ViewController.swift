@@ -301,6 +301,32 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         //twoViewController().viewWillDisappear(true)
 //            subject = twoViewController.subjectTextEnvoy
 //            textBodyRaw = twoViewController.bodyTextEnvoy
+        personName = textName.text!
+        personEmail = textEmail.text!
+        personPhone = textPhoneNumber.text!
+        personAddress = textAddress.text!
+        personCustom = customMessage.text!
+        print ("NAME " + personName)
+        print ("EMAIL " + personEmail)
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .medium
+        
+        let dateString = dateFormatter.string(from: date)
+        
+        
+        var contact = Interest(title:(personName + "\n"  +  personEmail + "\n" + personPhone + "\n" +  personAddress + "\n\n" + dateString))
+        
+        do {
+            try Disk.append(contact, to: "contacts.json", in: .caches)
+        } catch {
+            print("failed to save")
+        }
+        
+        carouselList.append(contact)
+        
         textBody = parseBody(text: textBodyRaw)
 //            //bodyText.text = textBody
         print("Raw: \(textBody)")

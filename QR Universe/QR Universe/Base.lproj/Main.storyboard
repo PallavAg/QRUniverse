@@ -130,7 +130,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Preferences"/>
                                 <connections>
-                                    <segue destination="Ggc-D1-mvP" kind="show" id="DFa-8C-tme"/>
+                                    <segue destination="Ggc-D1-mvP" kind="show" id="ilD-dy-IUO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9C-Bn-pJE">
@@ -254,6 +254,45 @@
                                 <rect key="frame" x="-280" y="63" width="375" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izu-gx-Sge">
+                                <rect key="frame" x="95" y="512" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Thank You!"/>
+                                <connections>
+                                    <action selector="thanksAction:" destination="Ggc-D1-mvP" eventType="touchUpInside" id="gq2-FE-Xms"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcd-pb-DD9">
+                                <rect key="frame" x="188" y="512" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Interview"/>
+                                <connections>
+                                    <action selector="interviewAction:" destination="Ggc-D1-mvP" eventType="touchUpInside" id="5tt-xQ-7b1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixh-H7-tHU">
+                                <rect key="frame" x="282" y="512" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Check-In"/>
+                                <connections>
+                                    <action selector="checkInAction:" destination="Ggc-D1-mvP" eventType="touchUpInside" id="CuK-Th-z1o"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Templates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sh-13-Zzy">
+                                <rect key="frame" x="16" y="473" width="139" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-TI-NRL">
+                                <rect key="frame" x="18" y="512" width="72" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Greattings"/>
+                                <connections>
+                                    <action selector="greetingsAction:" destination="Ggc-D1-mvP" eventType="touchUpInside" id="nLM-bg-imo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Czh-XX-tmq"/>
@@ -265,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6O-Q2-0o9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="578"/>
+            <point key="canvasLocation" x="1628" y="685"/>
         </scene>
         <!--Interests View Controller-->
         <scene sceneID="gDY-X1-cvQ">
@@ -369,14 +408,6 @@
                                     <segue destination="LRg-Fd-D0t" kind="show" id="bmT-Ss-Fy0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TK-Az-EvC">
-                                <rect key="frame" x="287" y="188" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clear"/>
-                                <connections>
-                                    <action selector="clearAction:" destination="Oiv-iU-T30" eventType="touchUpInside" id="814-J6-XYm"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -399,7 +430,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dbH-aI-Q8Z"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ScF-P6-Vi6"/>
+                    <navigationItem key="navigationItem" id="ScF-P6-Vi6">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="amD-Ud-O46">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0TK-Az-EvC">
+                                <rect key="frame" x="323" y="7" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearAction:" destination="Oiv-iU-T30" eventType="touchUpInside" id="814-J6-XYm"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="YyK-sl-AlO" id="xjm-Jd-18Z"/>
                     </connections>

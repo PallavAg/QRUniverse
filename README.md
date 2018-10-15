@@ -1,5 +1,5 @@
 # FollowUp / QRUniverse
-MHacks Hackathon Project
+MHacks 11 Hackathon Project
 
 https://devpost.com/software/follow-up-numh0y
 

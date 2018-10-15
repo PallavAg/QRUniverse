@@ -1,5 +1,8 @@
 # FollowUp / QRUniverse
 MHacks Hackathon Project
+
+https://devpost.com/software/follow-up-numh0y
+
 Created by:
 
 Viraat Das (https://github.com/viraatdas)
